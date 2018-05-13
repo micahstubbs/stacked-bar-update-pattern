@@ -1,5 +1,7 @@
 [Prettier](https://prettier.io/) formatted and [modern Javascript](https://babeljs.io/learn-es2015/) via the magic of code transformer [lebab](https://github.com/lebab/lebab) 
 
+in this example we also fix the size of the plot to 960px x 500px
+
 an iteration on [Stacked Bar Update Pattern](https://bl.ocks.org/HarryStevens/7e3ec1a6722a153a5d102b6c42f4501d) from [@Harry_Stevens](https://twitter.com/harry_stevens)
 
 ---

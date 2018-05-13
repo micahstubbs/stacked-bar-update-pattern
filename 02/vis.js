@@ -1,6 +1,6 @@
-const x_var = 'name';
+const x_var = 'name'
 
-const alphabet = 'abcdef'.split('');
+const alphabet = 'abcdef'.split('')
 const names = [
   'Ann',
   'Bob',
@@ -11,7 +11,7 @@ const names = [
   'Frida',
   'Greg',
   'Hillary'
-];
+]
 
 const setup = d3
   .marcon()
@@ -19,14 +19,16 @@ const setup = d3
   .bottom(20)
   .left(10)
   .right(10)
-  .width(window.innerWidth)
-  .height(window.innerHeight);
+  .width(960)
+  .height(500)
+// .width(window.innerWidth)
+// .height(window.innerHeight)
 
 setup.render()
 
-const width = setup.innerWidth();
-const height = setup.innerHeight();
-const svg = setup.svg();
+const width = setup.innerWidth()
+const height = setup.innerHeight()
+const svg = setup.svg()
 
 const color = d3.scaleOrdinal([
   '#66c2a5',
@@ -35,22 +37,22 @@ const color = d3.scaleOrdinal([
   '#e78ac3',
   '#a6d854',
   '#ffd92f'
-]);
+])
 
 const x = d3
   .scaleBand()
   .rangeRound([0, width])
   .domain(names)
-  .padding(0.25);
+  .padding(0.25)
 
-const y = d3.scaleLinear().rangeRound([height, 0]);
+const y = d3.scaleLinear().rangeRound([height, 0])
 
-const x_axis = d3.axisBottom(x);
+const x_axis = d3.axisBottom(x)
 
 const y_axis = d3
   .axisRight(y)
   .tickSize(width)
-  .tickFormat((d, i, ticks) => i == ticks.length - 1 ? `${d} value` : d);
+  .tickFormat((d, i, ticks) => (i == ticks.length - 1 ? `${d} value` : d))
 
 svg
   .append('g')
@@ -67,7 +69,7 @@ const stack = d3
   .stack()
   .keys(alphabet)
   .order(d3.stackOrderNone)
-  .offset(d3.stackOffsetNone);
+  .offset(d3.stackOffsetNone)
 
 redraw(randomData())
 
@@ -77,12 +79,7 @@ d3.interval(() => {
 
 function redraw(data) {
   // update the y scale
-  y.domain([
-    0,
-    jz.arr.max(
-      data.map(d => d.sum)
-    )
-  ])
+  y.domain([0, jz.arr.max(data.map(d => d.sum))])
 
   svg
     .select('.y')
@@ -94,7 +91,7 @@ function redraw(data) {
   alphabet.forEach((key, key_index) => {
     const bar = svg
       .selectAll(`.bar-${key}`)
-      .data(stack(data)[key_index], d => `${d.data[x_var]}-${key}`);
+      .data(stack(data)[key_index], d => `${d.data[x_var]}-${key}`)
 
     bar
       .transition()
@@ -116,11 +113,11 @@ function redraw(data) {
 
 function randomData(data) {
   return names.map(d => {
-    const obj = {};
+    const obj = {}
     obj.name = d
-    const nums = [];
+    const nums = []
     alphabet.forEach(e => {
-      const num = jz.num.randBetween(1, 10);
+      const num = jz.num.randBetween(1, 10)
       obj[e] = num
       nums.push(num)
     })
