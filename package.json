@@ -1,0 +1,10 @@
+{
+  "name": "stacked-bar-update-pattern",
+  "version": "1.0.0",
+  "description": "Use D3's general update pattern to animate stacked bar chart transitions.",
+  "main": "index.js",
+  "repository": "git@github.com:micahstubbs/stacked-bar-update-pattern.git",
+  "author": "Micah Stubbs <micah.stubbs@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
