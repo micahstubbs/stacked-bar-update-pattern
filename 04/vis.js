@@ -65,20 +65,35 @@ svg
   .attr('class', 'y axis')
   .call(customYAxis)
 
+svg
+  .append('rect')
+  .attr('class', 'interactionLayer')
+  .attr('x', 0)
+  .attr('y', 0)
+  .attr('height', height)
+  .attr('width', width)
+  .style('fill', 'none')
+  .style('pointer-events', 'all')
+
 const stack = d3
   .stack()
   .keys(alphabet)
   .order(d3.stackOrderNone)
   .offset(d3.stackOffsetNone)
 
-// no axis transition on initial render
-redraw(randomData())
+let datasetIndex = 0
 
-// redraw and show the nifty transition
-// once every 1000ms
-// d3.interval(() => {
-//   redraw(randomData())
-// }, 1000)
+d3.json('stacked-datasets.json', (error, data) => {
+  // no axis transition on initial render
+  redraw(data[datasetIndex])
+
+  d3.select('.interactionLayer').on('click', () => {
+    console.log('interactionLayer was clicked')
+    datasetIndex += 1
+    if (datasetIndex >= data.length) datasetIndex = 0 
+    redraw(data[datasetIndex], 250)
+  })
+})
 
 function redraw(data, axisTransitionDuration = 0) {
   // update the y scale
@@ -112,38 +127,7 @@ function redraw(data, axisTransitionDuration = 0) {
       .attr('height', d => y(d[0]) - y(d[1]))
       .attr('width', x.bandwidth())
       .attr('fill', d => color(key))
-
-    const randomDataset = randomData()
-    console.log('randomDataset', randomDataset)
-
-    svg
-      .append('rect')
-      .attr('class', 'interactionLayer')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('height', height)
-      .attr('width', width)
-      .style('fill', 'none')
-      .style('pointer-events', 'all')
-      .on('click', () => {
-        console.log('interactionLayer was clicked')
-        redraw(randomDataset, 250)
-      })
-  })
-}
-
-function randomData() {
-  return names.map(d => {
-    const obj = {}
-    obj.name = d
-    const nums = []
-    alphabet.forEach(e => {
-      const num = jz.num.randBetween(1, 10)
-      obj[e] = num
-      nums.push(num)
-    })
-    obj.sum = jz.arr.sum(nums)
-    return obj
+      .style('pointer-events', 'none')
   })
 }
 

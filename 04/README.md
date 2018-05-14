@@ -1,4 +1,40 @@
-an iteration with static data and a dropdown menu
+an iteration with static data from a json file.  for convenience, this iteration stores three stacked datasets in an array and then iterates through these datasets on click.
+
+```javascript
+[
+  dataset0,
+  dataset1,
+  dataset2
+]
+```
+
+where each dataset itself is an array of objects that look like this:
+
+```javascript
+[
+    {
+        "name": "Ann",
+        "a": 2,
+        "b": 10,
+        "c": 8,
+        "d": 10,
+        "e": 5,
+        "f": 9,
+        "sum": 44
+    },
+    {
+        "name": "Bob",
+        "a": 5,
+        "b": 1,
+        "c": 2,
+        "d": 6,
+        "e": 2,
+        "f": 9,
+        "sum": 25
+    },
+    ...
+]
+```
 
 ---
 
