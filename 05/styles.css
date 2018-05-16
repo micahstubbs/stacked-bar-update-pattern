@@ -24,7 +24,7 @@ h3 {
 }
 .dropdown-button {
   background: #fff;
-  min-width: 160px;
+  min-width: 190px;
   color: #000;
   letter-spacing: 0.025rem;
   box-sizing: border-box;
@@ -48,6 +48,7 @@ h3 {
   margin-bottom: auto;
   height: 5px;
   color: #000;
+  pointer-events: none;
 }
 
 .dropdown ul {
