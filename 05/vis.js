@@ -88,13 +88,6 @@ d3.json('stacked-datasets.json', (error, data) => {
   // no axis transition on initial render
   redraw(data[datasetIndex])
 
-  d3.select('.interactionLayer').on('click', () => {
-    console.log('interactionLayer was clicked')
-    datasetIndex += 1
-    if (datasetIndex >= data.length) datasetIndex = 0 
-    redraw(data[datasetIndex], 250)
-  })
-
   d3.select('#dataset-zero').on('click', () => {
     console.log('dataset-zero was clicked')
     redraw(data[0])
