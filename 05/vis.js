@@ -94,6 +94,21 @@ d3.json('stacked-datasets.json', (error, data) => {
     if (datasetIndex >= data.length) datasetIndex = 0 
     redraw(data[datasetIndex], 250)
   })
+
+  d3.select('#dataset-zero').on('click', () => {
+    console.log('dataset-zero was clicked')
+    redraw(data[0])
+  })
+
+  d3.select('#dataset-one').on('click', () => {
+    console.log('dataset-one was clicked')
+    redraw(data[1])
+  })
+
+  d3.select('#dataset-two').on('click', () => {
+    console.log('dataset-two was clicked')
+    redraw(data[2])
+  })
 })
 
 function redraw(data, axisTransitionDuration = 0) {
