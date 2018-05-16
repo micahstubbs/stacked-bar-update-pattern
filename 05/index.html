@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link rel = "stylesheet" type = "text/css" href = "styles.css" />
+  </head>
+  <body>
+    <h3 class='title'>D3 Stacked Bar Chart Showing Generated Data</h3>
+    <div class='controls'>
+      <div class='dropdown' id='datasets-dropdown'>  
+        <div class='dropdown-button'>Please Select</div>
+          <span class='triangle'>&#9660;</span>
+          <ul class='dropdown-selection'>
+            <li>Dataset One</li>
+            <li>Dataset Two</li>
+            <li>Dataset Three</li>
+          </ul>
+        </div> 
+      </div>
+    <div class='vis'></div>
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+    <script src='https://unpkg.com/jeezy/lib/jeezy.min.js'></script>
+    <script src='https://unpkg.com/d3-marcon/build/d3-marcon.min.js'></script>
+    <script src='dropdown.js'></script>
+    <script src='vis.js'></script>
+  </body>
+</html>

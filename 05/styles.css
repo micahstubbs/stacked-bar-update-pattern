@@ -1,0 +1,74 @@
+body {
+  margin: 0px;
+}
+
+.y.axis .domain {
+  display: none;
+}
+
+.axis text {
+  font-family: "Courier";
+}
+
+h3 {
+  margin: 10px 10px 10px 10px;
+  font-family: "Courier";
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  font-family: "Courier";
+  margin: 10px;
+}
+.dropdown-button {
+  background: #fff;
+  min-width: 160px;
+  color: #000;
+  letter-spacing: 0.025rem;
+  box-sizing: border-box;
+  padding: 10px 30px 10px 20px;
+  position: relative;
+  cursor: pointer;
+  transition: background .3s ease;
+  border: 2px solid #000
+}
+.dropdown-button:hover {
+  background: #f6f6f6;
+  transition: background .3s ease;
+}
+.triangle {
+  font-size: 100%;
+  position: absolute;
+  right: 10px;
+  top: -12px;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 5px;
+  color: #000;
+}
+
+.dropdown ul {
+  visibility: hidden;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0px 2px 6px 0 rgba(0,0,0,0.2);
+  position: absolute;
+  left: 0;
+  margin-top: 2px;
+  top: 100%;
+  min-width: 90%;
+}
+.dropdown li {
+  background: #fff;
+  padding: 8px 10px 8px 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.dropdown li:hover {
+  background: #f6f6f6;
+  transition: background .2s ease;
+}
