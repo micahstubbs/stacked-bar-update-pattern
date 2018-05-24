@@ -103,10 +103,10 @@ d3.json('stacked-datasets.json', (error, datasets) => {
 
     // each data column (a.k.a "key" or "series") needs to be iterated over
     // the variable seriesKeys represents the unique keys of the stacks
-    seriesKeys.forEach((key, key_index) => {
+    seriesKeys.forEach((key, keyIndex) => {
       const bar = svg
         .selectAll(`.bar-${key}`)
-        .data(stack(data)[key_index], d => `${d.data[xVariable]}-${key}`)
+        .data(stack(data)[keyIndex], d => `${d.data[xVariable]}-${key}`)
 
       bar
         .transition()
