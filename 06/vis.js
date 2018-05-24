@@ -1,5 +1,15 @@
 d3.json('stacked-datasets.json', (error, datasets) => {
-  const alphabet = 'abcdef'.split('')
+  const seriesKeys = 'abcdef'.split('')
+  const x_var = 'name'
+
+  const color = d3.scaleOrdinal([
+    '#66c2a5',
+    '#fc8d62',
+    '#8da0cb',
+    '#e78ac3',
+    '#a6d854',
+    '#ffd92f'
+  ])
 
   const setup = d3
     .marcon()
@@ -29,27 +39,17 @@ d3.json('stacked-datasets.json', (error, datasets) => {
   const names = Array.from(namesSet)
   console.log('names', names)
 
+  // scales
   const x = d3
     .scaleBand()
     .rangeRound([0, width])
     .domain(names)
     .padding(0.25)
 
-  const x_axis = d3.axisBottom(x)
-
-  const x_var = 'name'
-
-  const color = d3.scaleOrdinal([
-    '#66c2a5',
-    '#fc8d62',
-    '#8da0cb',
-    '#e78ac3',
-    '#a6d854',
-    '#ffd92f'
-  ])
-
   const y = d3.scaleLinear().rangeRound([height, 0])
 
+  // axes
+  const x_axis = d3.axisBottom(x)
   const y_axis = d3
     .axisRight(y)
     .tickSize(width)
@@ -68,7 +68,7 @@ d3.json('stacked-datasets.json', (error, datasets) => {
 
   const stack = d3
     .stack()
-    .keys(alphabet)
+    .keys(seriesKeys)
     .order(d3.stackOrderNone)
     .offset(d3.stackOffsetNone)
 
@@ -102,8 +102,8 @@ d3.json('stacked-datasets.json', (error, datasets) => {
       .call(customYAxis)
 
     // each data column (a.k.a "key" or "series") needs to be iterated over
-    // the variable alphabet represents the unique keys of the stacks
-    alphabet.forEach((key, key_index) => {
+    // the variable seriesKeys represents the unique keys of the stacks
+    seriesKeys.forEach((key, key_index) => {
       const bar = svg
         .selectAll(`.bar-${key}`)
         .data(stack(data)[key_index], d => `${d.data[x_var]}-${key}`)
