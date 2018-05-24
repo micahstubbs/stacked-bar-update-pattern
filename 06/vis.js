@@ -1,16 +1,5 @@
 d3.json('stacked-datasets.json', (error, datasets) => {
   const alphabet = 'abcdef'.split('')
-  // const names = [
-  //   'Ann',
-  //   'Bob',
-  //   'Jean',
-  //   'Chuck',
-  //   'Denise',
-  //   'Eric',
-  //   'Frida',
-  //   'Greg',
-  //   'Hillary'
-  // ]
 
   const setup = d3
     .marcon()
@@ -76,16 +65,6 @@ d3.json('stacked-datasets.json', (error, datasets) => {
     .append('g')
     .attr('class', 'y axis')
     .call(customYAxis)
-
-  // svg
-  //   .append('rect')
-  //   .attr('class', 'interactionLayer')
-  //   .attr('x', 0)
-  //   .attr('y', 0)
-  //   .attr('height', height)
-  //   .attr('width', width)
-  //   .style('fill', 'none')
-  //   .style('pointer-events', 'all')
 
   const stack = d3
     .stack()
