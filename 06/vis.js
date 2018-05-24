@@ -33,7 +33,7 @@ d3.json('stacked-datasets.json', (error, datasets) => {
   const xValuesSet = new Set()
   datasets.forEach(dataset => {
     dataset.forEach(d => {
-      xValuesSet.add(d.name)
+      xValuesSet.add(d[xVariable])
     })
   })
   const xValues = Array.from(xValuesSet)
