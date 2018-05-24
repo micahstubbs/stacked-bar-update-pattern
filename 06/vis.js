@@ -50,7 +50,7 @@ d3.json('stacked-datasets.json', (error, datasets) => {
 
   // axes
   const xAxis = d3.axisBottom(x)
-  const y_axis = d3
+  const yAxis = d3
     .axisRight(y)
     .tickSize(width)
     .tickFormat((d, i, ticks) => (i == ticks.length - 1 ? `${d} value` : d))
@@ -128,7 +128,7 @@ d3.json('stacked-datasets.json', (error, datasets) => {
   }
 
   function customYAxis(g) {
-    g.call(y_axis)
+    g.call(yAxis)
     g
       .selectAll('.tick:not(:first-of-type) line')
       .attr('stroke', '#777')
