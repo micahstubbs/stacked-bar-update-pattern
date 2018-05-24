@@ -49,7 +49,7 @@ d3.json('stacked-datasets.json', (error, datasets) => {
   const y = d3.scaleLinear().rangeRound([height, 0])
 
   // axes
-  const x_axis = d3.axisBottom(x)
+  const xAxis = d3.axisBottom(x)
   const y_axis = d3
     .axisRight(y)
     .tickSize(width)
@@ -59,7 +59,7 @@ d3.json('stacked-datasets.json', (error, datasets) => {
     .append('g')
     .attr('class', 'x axis')
     .attr('transform', `translate(0,${height})`)
-    .call(x_axis)
+    .call(xAxis)
 
   svg
     .append('g')
