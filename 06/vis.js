@@ -29,21 +29,21 @@ d3.json('stacked-datasets.json', (error, datasets) => {
   const height = setup.innerHeight()
   const svg = setup.svg()
 
-  // parse names from data
-  const namesSet = new Set()
+  // parse xValues from data
+  const xValuesSet = new Set()
   datasets.forEach(dataset => {
     dataset.forEach(d => {
-      namesSet.add(d.name)
+      xValuesSet.add(d.name)
     })
   })
-  const names = Array.from(namesSet)
-  console.log('names', names)
+  const xValues = Array.from(xValuesSet)
+  console.log('xValues', xValues)
 
   // scales
   const x = d3
     .scaleBand()
     .rangeRound([0, width])
-    .domain(names)
+    .domain(xValues)
     .padding(0.25)
 
   const y = d3.scaleLinear().rangeRound([height, 0])
