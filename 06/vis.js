@@ -1,6 +1,6 @@
 d3.json('stacked-datasets.json', (error, datasets) => {
   const seriesKeys = 'abcdef'.split('')
-  const x_var = 'name'
+  const xVariable = 'name'
 
   const color = d3.scaleOrdinal([
     '#66c2a5',
@@ -106,11 +106,11 @@ d3.json('stacked-datasets.json', (error, datasets) => {
     seriesKeys.forEach((key, key_index) => {
       const bar = svg
         .selectAll(`.bar-${key}`)
-        .data(stack(data)[key_index], d => `${d.data[x_var]}-${key}`)
+        .data(stack(data)[key_index], d => `${d.data[xVariable]}-${key}`)
 
       bar
         .transition()
-        .attr('x', d => x(d.data[x_var]))
+        .attr('x', d => x(d.data[xVariable]))
         .attr('y', d => y(d[1]))
         .attr('height', d => y(d[0]) - y(d[1]))
 
@@ -118,7 +118,7 @@ d3.json('stacked-datasets.json', (error, datasets) => {
         .enter()
         .append('rect')
         .attr('class', d => `bar bar-${key}`)
-        .attr('x', d => x(d.data[x_var]))
+        .attr('x', d => x(d.data[xVariable]))
         .attr('y', d => y(d[1]))
         .attr('height', d => y(d[0]) - y(d[1]))
         .attr('width', x.bandwidth())
